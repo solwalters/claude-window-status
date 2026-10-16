@@ -1,0 +1,63 @@
+{
+  "name": "claude-window-status",
+  "displayName": "Claude Window Status",
+  "description": "Prefixes the window title (and taskbar hover preview) with whether a Claude Code session in this workspace is working, waiting on you, or ready.",
+  "version": "0.1.0",
+  "publisher": "solwalters",
+  "license": "MIT",
+  "scripts": {
+    "package": "vsce package --allow-missing-repository"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeWindowStatus.clear",
+        "title": "Claude Window Status: Clear status for this window"
+      },
+      {
+        "command": "claudeWindowStatus.showLog",
+        "title": "Claude Window Status: Show log"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Window Status",
+      "properties": {
+        "claudeWindowStatus.updateTitle": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prefix window.title with the Claude status. Only applies when a .code-workspace file is open (the title is written to that file's settings)."
+        },
+        "claudeWindowStatus.prefix.working": {
+          "type": "string",
+          "default": "⏳ ",
+          "description": "Title prefix while Claude is working."
+        },
+        "claudeWindowStatus.prefix.waiting": {
+          "type": "string",
+          "default": "🔔 ",
+          "description": "Title prefix while Claude is waiting on a permission prompt or question."
+        },
+        "claudeWindowStatus.prefix.ready": {
+          "type": "string",
+          "default": "✅ ",
+          "description": "Title prefix once Claude has finished its turn."
+        },
+        "claudeWindowStatus.staleHours": {
+          "type": "number",
+          "default": 12,
+          "description": "Ignore session status files that haven't changed in this many hours (e.g. a session that was killed)."
+        }
+      }
+    }
+  }
+}
