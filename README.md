@@ -49,7 +49,7 @@ session in the same folder also lights up the window.
 
 ```powershell
 pwsh scripts/install-hooks.ps1        # copies the hook, registers it in ~/.claude/settings.json
-npx @vscode/vsce package --allow-missing-repository
+npx @vscode/vsce package
 code --install-extension claude-window-status-<version>.vsix
 ```
 

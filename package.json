@@ -5,8 +5,12 @@
   "version": "0.1.0",
   "publisher": "solwalters",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solwalters/claude-window-status.git"
+  },
   "scripts": {
-    "package": "vsce package --allow-missing-repository"
+    "package": "vsce package"
   },
   "engines": {
     "vscode": "^1.90.0"
